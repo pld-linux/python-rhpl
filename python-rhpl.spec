@@ -1,24 +1,32 @@
-Summary:	Library of python code used by programs in Red Hat Linux
+Summary:	Library of Python code used by some programs made by Red Hat
+Summary(pl):	Biblioteka kodu Pythona u¿ywana przez niektóre programy Red Hata
 Name:		python-rhpl
 Version:	0.158
 Release:	1
 License:	GPL
-Group:		System Environment/Libraries
+Group:		Libraries
 Source0:	rhpl-%{version}.tar.gz
 # Source0-md5:	6a9545f4bc70ed6ad390a25c08c0d968
-BuildRequires:	gettext
+BuildRequires:	gettext-devel
 BuildRequires:	python-devel
-Requires:	python >= %(%{__python} -c "import sys; print sys.version[:3]")
+%pyrequires_eq	python-libs
 %ifnarch s390 s390x
 Requires:	python-xf86config >= 0.3.2
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The rhpl package contains Python code used by programs in Red Hat Linux.
+The rhpl package contains Python code used by some programs made by
+Red Hat.
+
+%description -l pl
+Pakiet rhpl zawiera kod Pythona u¿ywany w niektórych programach
+stworzonych przez Red Hata.
 
 %prep
 %setup -q -n rhpl-%{version}
+
+rm -f po/no.po
 
 for module in . src/iconvmodule src/ethtool
 do
@@ -27,13 +35,16 @@ do
 	rm $module/Makefile.old
 done
 
-make
-
 %build
+%{__make} \
+	CC="%{__cc}" \
+	RPM_OPT_FLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} DESTDIR=${RPM_BUILD_ROOT} install
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang rhpl
 
@@ -42,7 +53,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f rhpl.lang
 %defattr(644,root,root,755)
-%doc README ChangeLog 
-%{_libdir}/python?.?/site-packages/rhpl
+%doc ChangeLog README
 %attr(755,root,root) %{_sbindir}/ddcprobe
+%dir %{py_sitedir}/rhpl
+%{py_sitedir}/rhpl/*.py*
+%attr(755,root,root) %{py_sitedir}/rhpl/*.so
 %{_datadir}/rhpl
