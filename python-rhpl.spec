@@ -2,7 +2,7 @@ Summary:	Library of Python code used by some programs made by Red Hat
 Summary(pl):	Biblioteka kodu Pythona u¿ywana przez niektóre programy Red Hata
 Name:		python-rhpl
 Version:	0.176
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		Libraries
 Source0:	rhpl-%{version}.tar.gz
@@ -12,7 +12,7 @@ BuildRequires:	libiw-devel
 BuildRequires:	python-devel
 %pyrequires_eq	python-libs
 %ifnarch s390 s390x
-Requires:	python-xf86config >= 0.3.2
+Requires:	python-xf86config >= 0.3.24
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
