@@ -1,5 +1,5 @@
 Summary:	Library of Python code used by some programs made by Red Hat
-Summary(pl):	Biblioteka kodu Pythona uøywana przez niektÛre programy Red Hata
+Summary(pl.UTF-8):   Biblioteka kodu Pythona u≈ºywana przez niekt√≥re programy Red Hata
 Name:		python-rhpl
 Version:	0.176
 Release:	3
@@ -17,8 +17,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The rhpl package contains Python code used by some programs made by
 Red Hat.
 
-%description -l pl
-Pakiet rhpl zawiera kod Pythona uøywany w niektÛrych programach
+%description -l pl.UTF-8
+Pakiet rhpl zawiera kod Pythona u≈ºywany w niekt√≥rych programach
 stworzonych przez Red Hata.
 
 %prep
