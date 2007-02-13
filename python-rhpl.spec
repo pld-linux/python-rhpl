@@ -1,5 +1,5 @@
 Summary:	Library of Python code used by some programs made by Red Hat
-Summary(pl.UTF-8):   Biblioteka kodu Pythona używana przez niektóre programy Red Hata
+Summary(pl.UTF-8):	Biblioteka kodu Pythona używana przez niektóre programy Red Hata
 Name:		python-rhpl
 Version:	0.176
 Release:	3
