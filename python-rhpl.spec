@@ -1,12 +1,12 @@
 Summary:	Library of Python code used by some programs made by Red Hat
 Summary(pl.UTF-8):	Biblioteka kodu Pythona używana przez niektóre programy Red Hata
 Name:		python-rhpl
-Version:	0.176
-Release:	4
+Version:	0.201
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	rhpl-%{version}.tar.gz
-# Source0-md5:	9ebe9200e71b07dae9b0a6e5a198dbe6
+# Source0-md5:	a40ecdad6b77b46b61ac76fe47c82c4d
 Patch0:		%{name}-enc.patch
 BuildRequires:	gettext-devel
 BuildRequires:	libiw-devel
@@ -35,10 +35,10 @@ rm -f src/firstboot_gui_window.py
 rm -f po/no.po
 
 sed -i -e 's#gcc#%{__cc}#g' Makefile */Makefile */*/Makefile
-sed -i -e 's/$(PYTHON) /python /' Makefile src/iconvmodule/Makefile src/ethtool/Makefile
 
 %build
 %{__make} \
+	PYTHON="%{__python}" \
 	PYTHONINCLUDE="%{py_incdir}" \
 	CC="%{__cc}" \
 	RPM_OPT_FLAGS="%{rpmcflags}"
@@ -47,6 +47,7 @@ sed -i -e 's/$(PYTHON) /python /' Makefile src/iconvmodule/Makefile src/ethtool/
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
+	PYTHON="%{__python}" \
 	PYTHONLIBDIR="%{py_sitedir}" \
 	DESTDIR=$RPM_BUILD_ROOT
 
