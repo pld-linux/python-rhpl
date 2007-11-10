@@ -2,7 +2,7 @@ Summary:	Library of Python code used by some programs made by Red Hat
 Summary(pl.UTF-8):	Biblioteka kodu Pythona używana przez niektóre programy Red Hata
 Name:		python-rhpl
 Version:	0.201
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	rhpl-%{version}.tar.gz
@@ -12,6 +12,8 @@ BuildRequires:	gettext-devel
 BuildRequires:	libiw-devel
 BuildRequires:	python-devel >= 1:2.5
 %pyrequires_eq	python-libs
+# sr@Latn vs. sr@latin
+Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,6 +34,7 @@ rm -f src/{xserver,videocard,monitor,mouse,guesslcd,xhwstate}.py
 # moved into firstboot
 rm -f src/firstboot_gui_window.py
 
+mv po/sr\@{Latn,latin}.po
 rm -f po/no.po
 
 sed -i -e 's#gcc#%{__cc}#g' Makefile */Makefile */*/Makefile
