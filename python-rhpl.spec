@@ -2,7 +2,7 @@ Summary:	Library of Python code used by some programs made by Red Hat
 Summary(pl):	Biblioteka kodu Pythona u¿ywana przez niektóre programy Red Hata
 Name:		python-rhpl
 Version:	0.176
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Source0:	rhpl-%{version}.tar.gz
