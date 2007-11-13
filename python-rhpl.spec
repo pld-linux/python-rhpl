@@ -1,12 +1,13 @@
 Summary:	Library of Python code used by some programs made by Red Hat
 Summary(pl.UTF-8):	Biblioteka kodu Pythona używana przez niektóre programy Red Hata
 Name:		python-rhpl
-Version:	0.176
-Release:	3
+Version:	0.201
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	rhpl-%{version}.tar.gz
-# Source0-md5:	9ebe9200e71b07dae9b0a6e5a198dbe6
+# Source0-md5:	a40ecdad6b77b46b61ac76fe47c82c4d
+Patch0:		%{name}-enc.patch
 BuildRequires:	gettext-devel
 BuildRequires:	libiw-devel
 BuildRequires:	python-devel
@@ -23,6 +24,7 @@ stworzonych przez Red Hata.
 
 %prep
 %setup -q -n rhpl-%{version}
+%patch0 -p1
 
 # remove deprecated modules
 # moved into python-rhpxl
@@ -32,15 +34,12 @@ rm -f src/firstboot_gui_window.py
 
 rm -f po/no.po
 
-for module in . src/iconvmodule src/ethtool
-do
-	mv $module/Makefile $module/Makefile.old
-	sed -e 's/$(PYTHON) /python /' $module/Makefile.old > $module/Makefile
-	rm $module/Makefile.old
-done
+sed -i -e 's#gcc#%{__cc}#g' Makefile */Makefile */*/Makefile
 
 %build
 %{__make} \
+	PYTHON="%{__python}" \
+	PYTHONINCLUDE="%{py_incdir}" \
 	CC="%{__cc}" \
 	RPM_OPT_FLAGS="%{rpmcflags}"
 
@@ -48,6 +47,8 @@ done
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
+	PYTHON="%{__python}" \
+	PYTHONLIBDIR="%{py_sitedir}" \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang rhpl
