@@ -12,7 +12,6 @@ BuildRequires:	gettext-devel
 BuildRequires:	libiw-devel
 BuildRequires:	python-devel >= 1:2.5
 %pyrequires_eq	python-libs
-Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
