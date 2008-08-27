@@ -1,12 +1,12 @@
 Summary:	Library of Python code used by some programs made by Red Hat
 Summary(pl.UTF-8):	Biblioteka kodu Pythona używana przez niektóre programy Red Hata
 Name:		python-rhpl
-Version:	0.212
+Version:	0.216
 Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	rhpl-%{version}.tar.bz2
-# Source0-md5:	1cf6842afd763b6aa16ea4a3e326a4af
+# Source0-md5:	5bde6574c92d0b3621dd3ce45b668079
 Patch0:		%{name}-enc.patch
 BuildRequires:	gettext-devel
 BuildRequires:	libiw-devel
