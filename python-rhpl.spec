@@ -5,6 +5,7 @@ Version:	0.216
 Release:	1
 License:	GPL
 Group:		Libraries
+# https://fedorahosted.org/releases/r/h/rhpl/ (not yet)
 Source0:	rhpl-%{version}.tar.bz2
 # Source0-md5:	5bde6574c92d0b3621dd3ce45b668079
 Patch0:		%{name}-enc.patch
