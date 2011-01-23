@@ -12,6 +12,8 @@ Patch0:		%{name}-enc.patch
 BuildRequires:	gettext-devel
 BuildRequires:	libiw-devel
 BuildRequires:	python-devel >= 1:2.5
+BuildRequires:	python-modules
+BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
