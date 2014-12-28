@@ -9,7 +9,7 @@ Group:		Libraries
 Source0:	rhpl-%{version}.tar.bz2
 # Source0-md5:	5bde6574c92d0b3621dd3ce45b668079
 Patch0:		%{name}-enc.patch
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libiw-devel
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	python-modules
