@@ -27,7 +27,7 @@ stworzonych przez Red Hata.
 
 %prep
 %setup -q -n rhpl-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 # remove deprecated modules
 # moved into python-rhpxl
